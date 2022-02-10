@@ -1,5 +1,20 @@
+buildscript {
+    repositories {
+        flatDir dirs: '../../proguard6.2.2/lib'
+    }
+    dependencies {
+        classpath ':proguard:'
+    }
+}
+
 plugins {
     id 'java'
+    id 'application'
+}
+
+application
+{
+    mainClass = 'csci2020u.lab03.CSVDemo'
 }
 
 group 'org.example'
@@ -24,10 +39,15 @@ jar {
                    'Implementation-Version': version
     }
 }
-/*
-def mainClassName = "csci2020u.lab03.CSVDemo"
-def version = "1.0"
 
+// minify task
+task(minify, dependsOn: 'jar', type: proguard.gradle.ProGuardTask) {
+    configuration 'proguard.cfg'
+    injars 'build/libs/app.jar'
+    outjars 'build/libs/app.min.jar'
+}
+
+/*
 jar {
     manifest {
         attributes "Main-Class": mainClassName,
