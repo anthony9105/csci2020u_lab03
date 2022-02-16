@@ -1,9 +1,12 @@
 buildscript {
     repositories {
-        flatDir dirs: '../../proguard6.2.2/lib'
+        //flatDir dirs: '../../proguard6.2.2/lib'
+        //flatDir dirs: 'proguard-7.1.0-beta5/lib'
+        flatDir dirs: 'proguard-7.1.0-beta5/lib'
     }
     dependencies {
         classpath ':proguard:'
+        //classpath ':proguard-7.1.0-beta5:'
     }
 }
 
